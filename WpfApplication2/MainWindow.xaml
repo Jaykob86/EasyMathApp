@@ -5,27 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EasyMathApp"
         mc:Ignorable="d"
-        Title="EasyMath by Jay" Height="350" Width="525" Icon="icon.ico">
+        Title="EasyMath by Jay" Height="400" Width="700" Icon="icon.ico">
     <Grid>
-        <Grid Margin="62,105,250,140">
-            <Label x:Name="labelNum1" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Height="74" Width="73" FontSize="48"/>
-            <Label x:Name="labelOperator" Content="" HorizontalAlignment="Left" Margin="78,0,0,0" VerticalAlignment="Top" Height="74" Width="54" FontSize="48"/>
-            <Label x:Name="labelNum2" Content="" HorizontalAlignment="Left" Margin="137,0,0,0" VerticalAlignment="Top" Height="74" Width="73" FontSize="48"/>
+        <Grid Margin="52,136,260,109">
+            <Label x:Name="labelNum1" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Height="74" Width="140" FontSize="48"/>
+            <Label x:Name="labelOperator" Content="" HorizontalAlignment="Left" Margin="145,0,0,0" VerticalAlignment="Top" Height="74" Width="54" FontSize="48"/>
+            <Label x:Name="labelNum2" Content="" HorizontalAlignment="Left" Margin="204,0,0,0" VerticalAlignment="Top" Height="74" Width="140" FontSize="48"/>
         </Grid>
-        <Label x:Name="labelTimer" Content="" HorizontalAlignment="Left" Margin="62,254,0,0" VerticalAlignment="Top" Height="42" Width="205" FontSize="24"/>
-        <Label x:Name="labelEquals" Content="=" HorizontalAlignment="Left" Margin="272,105,0,0" VerticalAlignment="Top" Height="74" Width="45" FontSize="48"/>
-        <TextBox x:Name="textResult" HorizontalAlignment="Left" Height="74" Margin="322,105,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="91" FontSize="48"/>
-        <Label x:Name="label" Content="Easy Math App" HorizontalAlignment="Left" Margin="10,20,0,0" VerticalAlignment="Top" Height="51" Width="172" FontSize="24"/>
-        <Button x:Name="startBtn" Content="Start/Reset" HorizontalAlignment="Left" Margin="194,27,0,0" VerticalAlignment="Top" Width="77" Height="38" Click="startBtn_Click"/>
-        <TextBox x:Name="textRounds" HorizontalAlignment="Left" Height="21" Margin="294,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="40" TextAlignment="Center" TextChanged="textRounds_TextChanged"/>
-        <Label x:Name="labelRounds" Content="Rounds:" HorizontalAlignment="Left" Margin="289,20,0,0" VerticalAlignment="Top" Height="24" Width="60"/>
-        <TextBox x:Name="textMaxnum" HorizontalAlignment="Left" Height="21" Margin="360,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="40" TextAlignment="Center" TextChanged="textMaxnum_TextChanged"/>
-        <Label x:Name="labelMaxnum" Content="Max num:" HorizontalAlignment="Left" Margin="354,20,0,0" VerticalAlignment="Top" Height="24" Width="67" RenderTransformOrigin="0.47,0.627"/>
-        <TextBox x:Name="textHighestnum" HorizontalAlignment="Left" Height="21" Margin="426,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="40" TextAlignment="Center" TextChanged="textHighestnum_TextChanged"/>
-        <Label x:Name="labelHighestnum" Content="Highest num:" HorizontalAlignment="Left" Margin="421,20,0,0" VerticalAlignment="Top" Height="24" Width="86"/>
-        <Button x:Name="submitBtn" Content="Submit result&#xA; (press enter)" HorizontalAlignment="Left" Margin="322,199,0,0" VerticalAlignment="Top" Width="91" Height="42" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="submitBtn_Click" IsDefault="True" IsCancel="True"/>
-        <Label x:Name="labelResult" Content="" HorizontalAlignment="Left" Margin="62,205,0,0" VerticalAlignment="Top" Height="44" Width="205" FontSize="24"/>
-        <Label x:Name="labelRunning" Content="" HorizontalAlignment="Left" Margin="317,79,0,0" VerticalAlignment="Top" Width="185"/>
+        <Label x:Name="labelTimer" Content="" HorizontalAlignment="Left" Margin="61,291,0,0" VerticalAlignment="Top" Height="42" Width="205" FontSize="24"/>
+        <Label x:Name="labelEquals" Content="=" HorizontalAlignment="Left" Margin="432,131,0,0" VerticalAlignment="Top" Height="74" Width="45" FontSize="48"/>
+        <TextBox x:Name="textResult" HorizontalAlignment="Left" Height="74" Margin="482,131,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="129" FontSize="48"/>
+        <Label x:Name="label" Content="Easy Math App" HorizontalAlignment="Left" VerticalAlignment="Top" Height="51" Width="172" FontSize="24" Margin="134,7,0,0"/>
+        <Button x:Name="startBtn" Content="Start nebo znovu začít" HorizontalAlignment="Left" Margin="92,65,0,0" VerticalAlignment="Top" Width="253" Height="51" Click="startBtn_Click"/>
+        <TextBox x:Name="textRounds" HorizontalAlignment="Left" Height="21" Margin="438,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="40" TextAlignment="Center" TextChanged="textRounds_TextChanged"/>
+        <Label x:Name="labelRounds" Content="Počet&#x0a;kol:" HorizontalAlignment="Left" Margin="439,18,0,0" VerticalAlignment="Top" Height="47" Width="60"/>
+        <TextBox x:Name="textMaxres" HorizontalAlignment="Left" Height="21" Margin="570,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="40" TextAlignment="Center" TextChanged="textMaxres_TextChanged"/>
+        <Label x:Name="labelMaxres" Content="Nejvyšší&#x0a;výsledek:" HorizontalAlignment="Left" Margin="570,18,0,0" VerticalAlignment="Top" Height="47" Width="67" RenderTransformOrigin="0.47,0.627"/>
+        <TextBox x:Name="textHighestnum" HorizontalAlignment="Left" Height="21" Margin="504,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="40" TextAlignment="Center" TextChanged="textHighestnum_TextChanged"/>
+        <Label x:Name="labelHighestnum" Content="Nejvyšší&#x0a;číslo:" HorizontalAlignment="Left" Margin="504,18,0,0" VerticalAlignment="Top" Height="47" Width="86"/>
+        <Button x:Name="submitBtn" Content="Odešli výsledek" HorizontalAlignment="Left" Margin="482,225,0,0" VerticalAlignment="Top" Width="129" Height="42" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="submitBtn_Click" IsDefault="True"/>
+        <Label x:Name="labelResult" Content="" HorizontalAlignment="Left" Margin="61,242,0,0" VerticalAlignment="Top" Height="44" Width="205" FontSize="24"/>
+        <Label x:Name="labelRunning" Content="" HorizontalAlignment="Left" Margin="482,105,0,0" VerticalAlignment="Top" Width="185"/>
 
     </Grid>
 </Window>

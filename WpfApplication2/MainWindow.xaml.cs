@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace EasyMathApp
 {
@@ -40,17 +41,14 @@ namespace EasyMathApp
 
         public MainWindow()
         {
-            //if (File.Exists(SETTINGSFILE))
-            //{
-            //    string[] settingsStr = File.ReadAllLines(SETTINGSFILE, Encoding.UTF8);
-
-            //}
-
 
             InitializeComponent();
+
+            readSettings();
+
             textRounds.Text = ROUNDS.ToString();
             textHighestnum.Text = THEHIGHESTNUMBER.ToString();
-            textMaxnum.Text = MAXRESULT.ToString();
+            textMaxres.Text = MAXRESULT.ToString();
         }
 
 
@@ -62,18 +60,20 @@ namespace EasyMathApp
             {
                 easyMath(out num1, out num2, out opr, out result);
                 populateTextBoxes(num1, num2, opr);
+                return;
             }
 
-            if (int.TryParse(textResult.Text, out userResultInt))
+            if (int.TryParse(textResult.Text, out userResultInt) || textResult.Text == "")
             {
+                if (textResult.Text == "") userResultInt = 0;
                 textResult.Text = "";
                 if (result == userResultInt)
                 {
-                    labelResult.Content = "OK";
+                    labelResult.Content = "Správně";
                 }
                 else
                 {
-                    labelResult.Content = "WRONG";
+                    labelResult.Content = "Špatně";
                 }
 
                 if (challengeRunning == false)
@@ -89,7 +89,7 @@ namespace EasyMathApp
 
                     if (result != userResultInt)
                     {
-                        resultList.Add($"{num1.ToString()} {opr} {num2.ToString()} = {result.ToString()} (Your result: {userResultInt.ToString()})\n");
+                        resultList.Add($"{num1.ToString()} {opr} {num2.ToString()} = {result.ToString()} (Tvůj výsledek: {userResultInt.ToString()})\n");
                     }
 
                     if (roundCounter < ROUNDS)
@@ -103,11 +103,29 @@ namespace EasyMathApp
                         labelResult.Content = "";
                         challengeRunning = false;
                         labelTimer.Content = stopwatch.Elapsed.ToString(@"mm\:ss");
-                        labelRunning.Content = "All done!";
+                        labelRunning.Content = "Hotovo!";
+                        easyMath(out num1, out num2, out opr, out result);
+                        populateTextBoxes(num1, num2, opr);
                         if (resultList.Count > 0)
                         {
-                            MessageBox.Show($"{string.Join("", resultList.ToArray())}", "Wrong results");
+                            MessageBox.Show($"{string.Join("", resultList.ToArray())}", "Chybné výsledky");
                         }
+                        else
+                        {
+                            MessageBox.Show("Žádná chyba! Skvělý výsledek!");
+                        }
+                        List<string> logList = new List<string>();
+                        logList.Add($@"{DateTime.Now}, 
+                                        Počet chyb: {resultList.Count},
+                                        Počet kol: {ROUNDS}, 
+                                        Nejvyšší číslo: {THEHIGHESTNUMBER}, 
+                                        Nejvyšší výsledek: {MAXRESULT}");
+                            foreach (var item in resultList)
+                            {
+                            logList.Add(item);
+                            }
+                        logList.Add(@"---------------------------------------------------------------------------");
+                        File.AppendAllLines(LOGFILE, logList);
                     }
                 }
             }
@@ -162,7 +180,7 @@ namespace EasyMathApp
             roundCounter = 0;
             labelResult.Content = "";
             labelTimer.Content = "";
-            labelRunning.Content = "Challenge running!";
+            labelRunning.Content = "Čas běží!";
             stopwatch.Reset();
             challengeRunning = true;
             resultList.Clear();
@@ -181,12 +199,13 @@ namespace EasyMathApp
                 stopwatch.Reset();
                 resultList.Clear();
                 labelRunning.Content = "";
+                changeOfSettings();
             }
         }
 
-        private void textMaxnum_TextChanged(object sender, TextChangedEventArgs e)
+        private void textMaxres_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (int.TryParse(textMaxnum.Text, out MAXRESULT))
+            if (int.TryParse(textMaxres.Text, out MAXRESULT))
             {
                 roundCounter = 0;
                 labelResult.Content = "";
@@ -194,6 +213,7 @@ namespace EasyMathApp
                 stopwatch.Reset();
                 resultList.Clear();
                 labelRunning.Content = "";
+                changeOfSettings();
             }
         }
 
@@ -207,13 +227,39 @@ namespace EasyMathApp
                 stopwatch.Reset();
                 resultList.Clear();
                 labelRunning.Content = "";
+                changeOfSettings();
             }
         }
 
         public void changeOfSettings()
         {
-            string[] settingsArr = 
-            File.WriteAllLines(SETTINGSFILE, @"Rounds: {textRounds.Text}",UTF8Encoding.UTF8);
+            string[] settingsArray = { $"Rounds: {textRounds.Text}", $"Highest number: {textHighestnum.Text}", $"Maximal result: {textMaxres.Text}"};
+            File.WriteAllLines(SETTINGSFILE, settingsArray, Encoding.UTF8);
+        }
+
+        public void readSettings()
+        {
+            if (File.Exists(SETTINGSFILE))
+            {
+                string[] settingsStr = File.ReadAllLines(SETTINGSFILE, Encoding.UTF8);
+                for (int i = 0; i < settingsStr.Length; i++)
+                {
+                    switch (i)
+                    {
+                        case 0:
+                            int.TryParse(Regex.Match(settingsStr[i], @"\d+").ToString(), out ROUNDS);
+                            break;
+                        case 1:
+                            int.TryParse(Regex.Match(settingsStr[i], @"\d+").ToString(), out THEHIGHESTNUMBER);
+                            break;
+                        case 2:
+                            int.TryParse(Regex.Match(settingsStr[i], @"\d+").ToString(), out MAXRESULT);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
         }
     }
 }

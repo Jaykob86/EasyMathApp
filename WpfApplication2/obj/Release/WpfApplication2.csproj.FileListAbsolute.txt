@@ -11,3 +11,16 @@ c:\users\jakub\documents\visual studio 2015\Projects\WpfApplication2\WpfApplicat
 c:\users\jakub\documents\visual studio 2015\Projects\WpfApplication2\WpfApplication2\obj\Release\WpfApplication2.pdb
 c:\users\jakub\documents\visual studio 2015\Projects\WpfApplication2\WpfApplication2\obj\Release\MainWindow.g.cs
 c:\users\jakub\documents\visual studio 2015\Projects\WpfApplication2\WpfApplication2\obj\Release\MainWindow.baml
+C:\neXX\GIT Projects\EasyMathApp\WpfApplication2\bin\Release\WpfApplication2.exe.config
+C:\neXX\GIT Projects\EasyMathApp\WpfApplication2\obj\Release\WpfApplication2.exe
+C:\neXX\GIT Projects\EasyMathApp\WpfApplication2\obj\Release\WpfApplication2.pdb
+C:\neXX\GIT Projects\EasyMathApp\WpfApplication2\bin\Release\WpfApplication2.exe
+C:\neXX\GIT Projects\EasyMathApp\WpfApplication2\bin\Release\WpfApplication2.pdb
+C:\neXX\GIT Projects\EasyMathApp\WpfApplication2\obj\Release\MainWindow.g.cs
+C:\neXX\GIT Projects\EasyMathApp\WpfApplication2\obj\Release\App.g.cs
+C:\neXX\GIT Projects\EasyMathApp\WpfApplication2\obj\Release\WpfApplication2_MarkupCompile.cache
+C:\neXX\GIT Projects\EasyMathApp\WpfApplication2\obj\Release\WpfApplication2_MarkupCompile.lref
+C:\neXX\GIT Projects\EasyMathApp\WpfApplication2\obj\Release\MainWindow.baml
+C:\neXX\GIT Projects\EasyMathApp\WpfApplication2\obj\Release\WpfApplication2.g.resources
+C:\neXX\GIT Projects\EasyMathApp\WpfApplication2\obj\Release\WpfApplication2.Properties.Resources.resources
+C:\neXX\GIT Projects\EasyMathApp\WpfApplication2\obj\Release\WpfApplication2.csproj.GenerateResource.Cache
